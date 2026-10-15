@@ -226,7 +226,6 @@ async function writeCopyText(text: string): Promise<boolean> {
   const accepted = await writeClipboard(text)
   if (accepted || !hasAsyncClipboard) return accepted
 
-  // ponytail: remove this retry once the host helper falls back after Clipboard API rejection.
   /* oxlint-disable typescript/no-deprecated */
   const exec = typeof document.execCommand === 'function'
     ? document.execCommand.bind(document)

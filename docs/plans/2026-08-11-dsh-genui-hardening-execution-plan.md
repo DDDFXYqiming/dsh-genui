@@ -1,6 +1,5 @@
 # DSH GenUI 稳定性、性能与发布加固执行计划
 
-> 状态：可执行
 > 审计基线：插件仓 `1aade42fd73c087b3f3bd7284da5c470285f0c6e`（`0.3.4`）；执行仍须重新 fetch 最新远端
 > 执行者：DSH
 > 计划日期：2026-08-11 至 2026-08-12
@@ -959,5 +958,3 @@ PLUGIN_SHA = 含 0.4.0 版本、changelog、锁文件和确定构建产物的插
 不要只说“测试通过”或“功能已修复”；必须分别给出插件 SHA、宿主 SHA 和能复现的证据。
 
 ## 12. 可直接交给 DSH 的执行指令
-
-> 严格执行 `docs/plans/2026-08-11-dsh-genui-hardening-execution-plan.md`。先从插件和 DSH 主仓最新远端分别建立干净独立 worktree；保留主工作区现有本地提交 `692a2b7` 与未提交 `scripts/e2e.mjs` onboarding WIP，不得 reset、覆盖或自动 cherry-pick。按阶段 0→6 串行推进：先完成带真实 `context.sessionId` 的 DSH settled FenceSource 契约，再改插件事务式、定序且有固定上限的 panel operation 模型；不要使用全局 active session、随机 ID、内容哈希、Infinity、兼容层或到达顺序。每阶段完成全部定向测试、全量测试和规定验收后再进入下一阶段。所有浏览器/E2E 使用独立 DSH_HOME、临时工作区、空闲端口、headless Chrome 和目标宿主 checkout 构建出的绝对 DSH_BIN，禁止触碰活跃 3080 服务、PATH 上的旧 dsh 或 broad pkill。发布证据必须分别记录插件 SHA 与宿主 SHA；未获肠粉明确授权，不合并、不打 tag、不发布。CI Billing、宿主合并或权限阻塞必须如实报告，不能跳过后宣称完成。
